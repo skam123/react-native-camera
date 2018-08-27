@@ -172,14 +172,8 @@ static NSDictionary *defaultFaceDetectorOptions = nil;
         {
             NSError *error = nil;
             if ([device lockForConfiguration:&error]) {
-                if (self.flashMode == RNCameraFlashModeOff) {
-                    if ([device isTorchModeSupported:AVCaptureTorchModeOff]) {
-                        [device setTorchMode:AVCaptureTorchModeOff];
-                    }
-                } else {
-                    if ([device isTorchModeSupported:AVCaptureTorchModeOn]) {
-                        [device setTorchMode:AVCaptureTorchModeOn];
-                    }
+                if ([device isTorchModeSupported:AVCaptureTorchModeOff]) {
+                    [device setTorchMode:AVCaptureTorchModeOff];
                 }
                 [device setFlashMode:self.flashMode];
                 [device unlockForConfiguration];
